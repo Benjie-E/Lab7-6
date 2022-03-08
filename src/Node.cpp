@@ -89,6 +89,7 @@ string Node::remove(int index){
 
 }
 void Node::deleteList(){
+	if(!isTail())
 	nextNode->deleteList();
 	delete this;
 }

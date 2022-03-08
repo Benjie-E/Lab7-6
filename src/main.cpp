@@ -22,7 +22,7 @@ Node* head = nullptr;
 
 bool addBooks() {
 	string book;
-	cout << "Enter book title:" << endl;
+	cout << "Enter book title and type \"Done\" when finished:" << endl;
 while(true){
 	cin >> book;
 	if(book == "Done"){
