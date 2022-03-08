@@ -36,7 +36,7 @@ int Node::getSize() {
 	if(isTail()){
 		return 1;
 	}
-	return nextNode->getSize()+1;
+	return 1+nextNode->getSize();
 }
 
 string Node::printList() {
@@ -55,14 +55,14 @@ void Node::append(Node* newNode) {
 	}
 }
 
-Node* Node::next() {
-}
-
-void Node::pop() {
+string Node::pop() {
 	if(nextNode->isTail()){
+		string value = nextNode->getData();
 		delete nextNode;
 		nextNode=nullptr;
+		return value;
 	}
+	return nextNode->pop();
 }
 
 string Node::getData() {
@@ -73,8 +73,22 @@ bool Node::isTail() {
 	return nextNode==nullptr;
 }
 
-void Node::remove(int num) {
+bool Node::remove(string data) {
+	if(isTail()){
+		return false;
+	}
+	else if(nextNode->getData()==data){
+		Node* next = nextNode->nextNode;
+		delete nextNode;
+		nextNode = next;
+		return true;
+	}
+	return nextNode->remove(data);
 }
+string Node::remove(int index){
 
-void Node::remove(string data) {
+}
+void Node::deleteList(){
+	nextNode->deleteList();
+	delete this;
 }

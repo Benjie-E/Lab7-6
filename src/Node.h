@@ -23,6 +23,7 @@
 using namespace std;
 class Node {
 public:
+	Node();
 	Node(string data);
 	Node(string data, Node* head);
 	~Node();
@@ -30,12 +31,14 @@ public:
 	string printList();
 	void append(Node* newNode);
 
-	void pop();
+	string pop();
 	string getData();
 
-	void remove(int num);
-	void remove(string data);
+	string remove(int index);
+	bool remove(string data);
+	void deleteList();
 private:
+	bool isEmpty();
 	Node* next();
 	bool isTail();
 
